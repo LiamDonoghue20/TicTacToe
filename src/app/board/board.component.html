@@ -1,0 +1,28 @@
+<h1>Current Player: {{ player }} </h1>
+
+<!-- button to call newGame function -->
+<button nbButton outline status="danger" (click)="newGame()">Start new Game</button>
+
+<!-- if a winner has been returned then present it in heading text -->
+<h2 *ngIf="winner">
+    Player {{ winner }} won the game!
+</h2>
+
+<h2 *ngIf="draw">
+    It's a draw! Please start a new game
+</h2>
+
+
+<main>
+    <!-- child component of square nested in the parent board component
+    ngFor to show a square for each item in the squares array
+    call makeMove function every click and pass the input 'value' from the child component-->
+    <app-square 
+        *ngFor="let val of squares; let i = index" 
+        [value]="val"
+        (click)="makeMove(i)"> 
+
+    </app-square>
+</main>
+
+
